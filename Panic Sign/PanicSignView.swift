@@ -13,25 +13,13 @@ class PanicSignView: ScreenSaverView {
         self.sceneView.prepare()
         self.addSubview(self.sceneView)
     }
-//    override init?(frame: NSRect, isPreview: Bool) {
-//        super.init(frame: frame, isPreview: isPreview)
-//    }
-//    override func draw(_ rect: NSRect) {
-//        super.draw(rect)
-//
-//        NSColor.red.setFill()
-//        self.bounds.fill()
-//
-//        NSColor.black.set()
-//
-//        let hello: NSString = "hello SWIFT screen saver plugin"
-//        hello.draw(at: NSPoint(x: 100.0, y: 200.0), withAttributes: nil)
-//    }
 }
 
 class PanicSceneView: SCNView {
+    lazy var logoNode = SCNNode()
+
     func prepare() {
-        self.backgroundColor = .darkGray
+        self.backgroundColor = .black
         self.scene = SCNScene()
         self.prepareScene()
         self.addShape()
@@ -62,15 +50,15 @@ class PanicSceneView: SCNView {
         scene.rootNode.addChildNode(lightNode)
         scene.rootNode.addChildNode(ambientNode)
 
-        self.allowsCameraControl = true
-        self.showsStatistics = true
+//        self.allowsCameraControl = true
+//        self.showsStatistics = true
     }
 
     func addShape() {
         guard let scene = self.scene else {
             return
         }
-        let logo = Logo(size: 20.0)
+        let logo = Logo(size: 20.0, inset: 10.0)
 
         let upperPath = logo.drawUpperBackground()
         upperPath.lineJoinStyle = .round
@@ -93,14 +81,48 @@ class PanicSceneView: SCNView {
         let centerShape = SCNShape(path: centerPath, extrusionDepth: 3)
         centerShape.firstMaterial?.diffuse.contents = NSColor.white
 
-        let logoNode = SCNNode()
-        logoNode.addChildNode(SCNNode(geometry: upperShape))
-        logoNode.addChildNode(SCNNode(geometry: lowerShape))
-        logoNode.addChildNode(SCNNode(geometry: centerShape))
-        logoNode.position = SCNVector3(0.0, 0.0, 0.0)
-        logoNode.rotation = SCNVector4(1.0, 1.0, 0.0, 0.0)
+        self.logoNode.addChildNode(SCNNode(geometry: upperShape))
+        self.logoNode.addChildNode(SCNNode(geometry: lowerShape))
+        self.logoNode.addChildNode(SCNNode(geometry: centerShape))
+        self.logoNode.position = SCNVector3(0.0, 0.0, 0.0)
+        self.logoNode.rotation = SCNVector4(1.0, 1.0, 0.0, 0.0)
 
         scene.rootNode.addChildNode(logoNode)
+
+        self.logoShouldRotate()
+        self.logoShouldMove()
+    }
+
+    func logoShouldMove() {
+        let move = CABasicAnimation(keyPath: "transform.translation")
+        move.toValue = NSPoint(x: .random(in: -5.0 ... 5.0), y: .random(in: -5.0 ... 5.0))
+        move.autoreverses = true
+        move.duration = 5
+
+        let moveAnimation = SCNAnimation(caAnimation: move)
+        moveAnimation.animationDidStop = { [weak self] in self?.logoDidMove($0, $1, $2) }
+
+        self.logoNode.addAnimation(moveAnimation, forKey: "move")
+    }
+
+    func logoDidMove(_: SCNAnimation, _: SCNAnimatable, _: Bool) -> Void {
+        self.logoShouldMove()
+    }
+
+    func logoShouldRotate() {
+        let rotate = CABasicAnimation(keyPath: "rotation.w")
+        rotate.toValue = .random(in: -0.35 ... 0.35) * .pi
+        rotate.duration = 20.0 * Double(abs(rotate.toValue as? CGFloat ?? 0) / (0.35 * .pi))
+        rotate.autoreverses = true
+
+        let rotateAnimation = SCNAnimation(caAnimation: rotate)
+        rotateAnimation.animationDidStop = { [weak self] in self?.logoDidRotate($0, $1, $2) }
+
+        self.logoNode.addAnimation(rotateAnimation, forKey: "rotate")
+    }
+
+    func logoDidRotate(_: SCNAnimation, _: SCNAnimatable, _: Bool) -> Void {
+        self.logoShouldRotate()
     }
 }
 
@@ -110,11 +132,11 @@ struct Logo {
     let radius: CGFloat
     let inflection: CGFloat
 
-    init(size: CGFloat) {
+    init(size: CGFloat, inset: CGFloat = 0) {
         self.radius = (size * 0.865) / 2.0
         self.inflection = size / 10.0
         self.size = NSSize(width: self.radius * 2.0, height: self.radius * 2.0)
-        self.center = NSPoint(x: size / 2.0, y: size / 2.0)
+        self.center = NSPoint(x: (size / 2.0) - inset, y: (size / 2.0) - inset)
     }
 
     func draw() {
@@ -134,11 +156,7 @@ struct Logo {
                 controlPoint2: self.position(idx: pos + 1.50, inflected: true))
         }
         path.close()
-        path.windingRule = .evenOdd
         return path
-//        let fillColor = NSColor(red: 0.208, green: 0.773, blue: 0.882, alpha: 1)
-//        fillColor.setFill()
-//        path.fill()
     }
 
     func drawLowerBackground() -> NSBezierPath {
@@ -152,11 +170,7 @@ struct Logo {
                 controlPoint2: self.position(idx: pos + 1.50, inflected: true))
         }
         path.close()
-        path.windingRule = .evenOdd
         return path
-//        let fillColor = NSColor(red: 0.071, green: 0.439, blue: 0.576, alpha: 1)
-//        fillColor.setFill()
-//        path.fill()
     }
 
     func drawLetter() -> NSBezierPath {
@@ -214,14 +228,8 @@ struct Logo {
         path.line(to: coords[8])
         path.line(to: coords[9])
         path.move(to: coords[4])
-
         path.close()
-
-        path.windingRule = .evenOdd
         return path
-//        let fillColor = NSColor.white
-//        fillColor.setFill()
-//        path.fill()
     }
 
     func position(idx: CGFloat, inflected: Bool = false) -> NSPoint {
