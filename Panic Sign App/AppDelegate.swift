@@ -7,12 +7,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     weak var window: NSWindow!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        guard let contentView = self.window.contentView, let screenSaver = PanicSignView(frame: .zero, isPreview: false) else {
+        guard let contentView = self.window.contentView, let screenSaver = PanicSignView(frame: contentView.bounds, isPreview: false) else {
             fatalError("missing content view or screensaver view")
         }
-        screenSaver.frame = contentView.bounds
         contentView.addSubview(screenSaver)
-
         screenSaver.startAnimation()
     }
 
