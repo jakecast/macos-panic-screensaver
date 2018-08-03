@@ -21,6 +21,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2018 Rally Cat. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
-	<string>PanicSign.PanicSignView</string>
+	<string>PanicSign.PNCScreenSaver</string>
 </dict>
 </plist>
