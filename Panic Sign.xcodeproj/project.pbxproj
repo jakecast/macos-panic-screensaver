@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23085124211664C200648E49 /* PNCLogoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23085123211664C200648E49 /* PNCLogoColor.swift */; };
+		230851252116668D00648E49 /* PNCLogoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23085123211664C200648E49 /* PNCLogoColor.swift */; };
 		2329E1E7210BC231007606A5 /* PNCScreenSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329E1E6210BC231007606A5 /* PNCScreenSaver.swift */; };
 		2329E1E8210BC273007606A5 /* PNCScreenSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329E1E6210BC231007606A5 /* PNCScreenSaver.swift */; };
 		232E7BC1211381860021F4C7 /* PNCLogoGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E7BC0211381860021F4C7 /* PNCLogoGeometry.swift */; };
@@ -39,8 +41,6 @@
 		237AC67E2116399000627644 /* PNCPathProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237AC67C2116399000627644 /* PNCPathProtocol.swift */; };
 		237AC68021163B4E00627644 /* PNCPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237AC67F21163B4E00627644 /* PNCPopUpButton.swift */; };
 		237AC68121163B4E00627644 /* PNCPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237AC67F21163B4E00627644 /* PNCPopUpButton.swift */; };
-		237AC68321163D2700627644 /* NSPopUpButton+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237AC68221163D2700627644 /* NSPopUpButton+PanicSign.swift */; };
-		237AC68421163D2700627644 /* NSPopUpButton+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237AC68221163D2700627644 /* NSPopUpButton+PanicSign.swift */; };
 		237FB1032110CE6F004C3D14 /* NSColor+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FB1022110CE6F004C3D14 /* NSColor+PanicSign.swift */; };
 		237FB1052110D0F7004C3D14 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237FB1042110D0F7004C3D14 /* Colors.xcassets */; };
 		237FB1062110D159004C3D14 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237FB1042110D0F7004C3D14 /* Colors.xcassets */; };
@@ -71,6 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23085123211664C200648E49 /* PNCLogoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCLogoColor.swift; sourceTree = "<group>"; };
 		2329E1E6210BC231007606A5 /* PNCScreenSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCScreenSaver.swift; sourceTree = "<group>"; };
 		232E7BC0211381860021F4C7 /* PNCLogoGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCLogoGeometry.swift; sourceTree = "<group>"; };
 		232E7BC321138B910021F4C7 /* SCNShape+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNShape+PanicSign.swift"; sourceTree = "<group>"; };
@@ -87,7 +88,6 @@
 		237AC6722116363300627644 /* PNCUserOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCUserOption.swift; sourceTree = "<group>"; };
 		237AC67C2116399000627644 /* PNCPathProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNCPathProtocol.swift; sourceTree = "<group>"; };
 		237AC67F21163B4E00627644 /* PNCPopUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCPopUpButton.swift; sourceTree = "<group>"; };
-		237AC68221163D2700627644 /* NSPopUpButton+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPopUpButton+PanicSign.swift"; sourceTree = "<group>"; };
 		237FB1022110CE6F004C3D14 /* NSColor+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+PanicSign.swift"; sourceTree = "<group>"; };
 		237FB1042110D0F7004C3D14 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		237FB1082110D498004C3D14 /* SCNGeometry+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNGeometry+PanicSign.swift"; sourceTree = "<group>"; };
@@ -174,7 +174,6 @@
 				237FB1232110E286004C3D14 /* Int+PanicSign.swift */,
 				237FB1022110CE6F004C3D14 /* NSColor+PanicSign.swift */,
 				237AC667211629A100627644 /* NSImage+PanicSign.swift */,
-				237AC68221163D2700627644 /* NSPopUpButton+PanicSign.swift */,
 				237AC66F211632C700627644 /* NSRect+PanicSign.swift */,
 				237FB11C2110DD49004C3D14 /* SCNNode+PanicSign.swift */,
 				237FB1082110D498004C3D14 /* SCNGeometry+PanicSign.swift */,
@@ -187,6 +186,7 @@
 		237FB1182110DB29004C3D14 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				23085123211664C200648E49 /* PNCLogoColor.swift */,
 				237AC6722116363300627644 /* PNCUserOption.swift */,
 				237FB1192110DB6C004C3D14 /* SCNViewSetting.swift */,
 			);
@@ -387,6 +387,7 @@
 				237FB1092110D498004C3D14 /* SCNGeometry+PanicSign.swift in Sources */,
 				237FB12C2110EE51004C3D14 /* PNCBottomPath.swift in Sources */,
 				232E7BC421138B910021F4C7 /* SCNShape+PanicSign.swift in Sources */,
+				23085124211664C200648E49 /* PNCLogoColor.swift in Sources */,
 				237FB1102110D7E1004C3D14 /* Dictionary+PanicSign.swift in Sources */,
 				23619D8F211047DF00C1C99E /* PNCLogoNode.swift in Sources */,
 				2329E1E7210BC231007606A5 /* PNCScreenSaver.swift in Sources */,
@@ -397,7 +398,6 @@
 				237FB1032110CE6F004C3D14 /* NSColor+PanicSign.swift in Sources */,
 				237FB12E2110EE5B004C3D14 /* PNCLetterPath.swift in Sources */,
 				237FB12A2110EE47004C3D14 /* PNCTopPath.swift in Sources */,
-				237AC68321163D2700627644 /* NSPopUpButton+PanicSign.swift in Sources */,
 				237AC670211632C800627644 /* NSRect+PanicSign.swift in Sources */,
 				233D3F2B2114DAA900FB39B8 /* PNCMenuItem.swift in Sources */,
 				237AC6732116363300627644 /* PNCUserOption.swift in Sources */,
@@ -420,6 +420,7 @@
 				237FB10D2110D570004C3D14 /* SCNView+PanicSign.swift in Sources */,
 				232E7BC821138DE50021F4C7 /* CGSize+PanicSign.swift in Sources */,
 				23FA88D12108F38700B7E751 /* AppDelegate.swift in Sources */,
+				230851252116668D00648E49 /* PNCLogoColor.swift in Sources */,
 				237FB1322110EFCD004C3D14 /* PNCBottomPath.swift in Sources */,
 				2329E1E8210BC273007606A5 /* PNCScreenSaver.swift in Sources */,
 				237AC68121163B4E00627644 /* PNCPopUpButton.swift in Sources */,
@@ -441,7 +442,6 @@
 				237AC6742116386500627644 /* PNCUserOption.swift in Sources */,
 				237FB12F2110EFCA004C3D14 /* CGFloat+PanicSign.swift in Sources */,
 				237FB10A2110D554004C3D14 /* SCNGeometry+PanicSign.swift in Sources */,
-				237AC68421163D2700627644 /* NSPopUpButton+PanicSign.swift in Sources */,
 				237FB11E2110DD60004C3D14 /* SCNNode+PanicSign.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,9 @@ class PNCPreferencesController: NSWindowController {
     @IBOutlet
     weak var topColorButton: NSPopUpButton!
 
+    @IBOutlet
+    weak var bottomColorButton: NSPopUpButton!
+
     convenience init() {
         self.init(window: nil)
     }
@@ -23,15 +26,25 @@ class PNCPreferencesController: NSWindowController {
     }
 
     func popUpButtonsNeedUpdate() {
-        self.topColorButton.selectItem(withIdentifier: self.preferences.topColorName)
+        self.topColorButton.selectItem(withTag: self.preferences.topColorTag)
+        self.bottomColorButton.selectItem(withTag: self.preferences.bottomColorTag)
     }
 
     @IBAction
     func selectTopColor(_ popUpButton: NSPopUpButton) {
-        guard let name = popUpButton.selectedItem?.identifier?.rawValue else {
+        guard let name = popUpButton.selectedItem?.tag else {
             return
         }
         self.preferences.set(value: name, key: .topColor)
+        self.screenSaver?.redrawScene()
+    }
+
+    @IBAction
+    func selectBottomColor(_ popUpButton: NSPopUpButton) {
+        guard let name = popUpButton.selectedItem?.tag else {
+            return
+        }
+        self.preferences.set(value: name, key: .bottomColor)
         self.screenSaver?.redrawScene()
     }
 

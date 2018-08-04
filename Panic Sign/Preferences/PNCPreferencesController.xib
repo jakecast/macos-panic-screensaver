@@ -9,6 +9,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PNCPreferencesController" customModule="PanicSign" customModuleProvider="target">
             <connections>
+                <outlet property="bottomColorButton" destination="VRq-L0-2nh" id="O0d-Kq-hhd"/>
                 <outlet property="topColorButton" destination="MDQ-Ec-23h" id="lzI-uV-WsV"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="D8Y-oi-hD4"/>
             </connections>
@@ -24,107 +25,94 @@
                 <rect key="frame" x="0.0" y="0.0" width="340" height="220"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wWk-vL-zxO">
-                        <rect key="frame" x="256" y="13" width="59" height="32"/>
-                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qbf-64-QQB">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="handleOkayButton:" target="-2" id="xxY-SW-ckw"/>
-                        </connections>
-                    </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fMx-Gy-jGn" userLabel="Top Color Label">
-                        <rect key="frame" x="95" y="181" width="71" height="19"/>
+                        <rect key="frame" x="95" y="180" width="71" height="19"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Top Color:" id="WLp-r4-xmg">
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Top Color:" id="WLp-r4-xmg" userLabel="Cell">
                             <font key="font" metaFont="system" size="14"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MDQ-Ec-23h" userLabel="Top Color Button" customClass="PNCPopUpButton" customModule="PanicSign" customModuleProvider="target">
+                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MDQ-Ec-23h" userLabel="Top Color Button">
                         <rect key="frame" x="170" y="176" width="142" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <popUpButtonCell key="cell" type="push" title="Red" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="dzv-ep-tMG" id="15N-Hb-V81" userLabel="Top Color Select">
+                        <popUpButtonCell key="cell" type="push" title="Red" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="dzv-ep-tMG" id="15N-Hb-V81" userLabel="Cell">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" id="6NA-bd-8Ma">
                                 <items>
-                                    <menuItem title="Red" image="Glyph-MenuItemImage" identifier="panicRed" id="dzv-ep-tMG" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                    <menuItem title="Red" state="on" image="Glyph-MenuItemImage" tag="1" id="dzv-ep-tMG" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
                                                 <color key="value" name="panicRed"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </menuItem>
-                                    <menuItem title="Orange" image="Glyph-MenuItemImage" identifier="panicOrange" id="Bce-y2-bjx" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                    <menuItem title="Orange" image="Glyph-MenuItemImage" tag="2" id="Bce-y2-bjx" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
                                                 <color key="value" name="panicOrange"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </menuItem>
-                                    <menuItem title="Yellow" image="Glyph-MenuItemImage" identifier="panicYellow" id="hGY-4a-fhP" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                    <menuItem title="Yellow" image="Glyph-MenuItemImage" tag="3" id="hGY-4a-fhP" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
                                                 <color key="value" name="panicLemon"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </menuItem>
-                                    <menuItem title="Lemon" image="Glyph-MenuItemImage" identifier="panicLemon" id="L33-CH-cub" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                    <menuItem title="Lemon" image="Glyph-MenuItemImage" tag="4" id="L33-CH-cub" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
                                                 <color key="value" name="panicLemon"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </menuItem>
-                                    <menuItem title="Green" image="Glyph-MenuItemImage" identifier="panicGreen" id="ZyY-8L-dCb" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                    <menuItem title="Green" image="Glyph-MenuItemImage" tag="5" id="ZyY-8L-dCb" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
                                                 <color key="value" name="panicGreen"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </menuItem>
-                                    <menuItem title="Teal" image="Glyph-MenuItemImage" identifier="panicTeal" id="xWs-Z6-3ii" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                    <menuItem title="Teal" image="Glyph-MenuItemImage" tag="6" id="xWs-Z6-3ii" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
                                                 <color key="value" name="panicTeal"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </menuItem>
-                                    <menuItem title="Seafoam" image="Glyph-MenuItemImage" identifier="panicSeafoam" id="Pxc-LI-cte" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                    <menuItem title="Seafoam" image="Glyph-MenuItemImage" tag="7" id="Pxc-LI-cte" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
                                                 <color key="value" name="panicSeafoam"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </menuItem>
-                                    <menuItem title="Blue" image="Glyph-MenuItemImage" identifier="panicBlue" id="VaP-KW-FuN" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                    <menuItem title="Blue" image="Glyph-MenuItemImage" tag="8" id="VaP-KW-FuN" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
                                                 <color key="value" name="panicBlue"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </menuItem>
-                                    <menuItem title="Navy" image="Glyph-MenuItemImage" identifier="panicNavy" id="sNV-Wg-ujX" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                    <menuItem title="Navy" image="Glyph-MenuItemImage" tag="9" id="sNV-Wg-ujX" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
                                                 <color key="value" name="panicNavy"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </menuItem>
-                                    <menuItem title="Purple" image="Glyph-MenuItemImage" identifier="panicPurple" id="B8G-UQ-eP0" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                    <menuItem title="Purple" image="Glyph-MenuItemImage" tag="10" id="B8G-UQ-eP0" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
                                                 <color key="value" name="panicPurple"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </menuItem>
-                                    <menuItem title="Pink" image="Glyph-MenuItemImage" identifier="panicPink" id="y40-0y-gaq" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                    <menuItem title="Pink" image="Glyph-MenuItemImage" tag="11" id="y40-0y-gaq" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
                                                 <color key="value" name="panicPink"/>
@@ -138,6 +126,120 @@ DQ
                             <action selector="selectTopColor:" target="-2" id="YBE-il-FQC"/>
                         </connections>
                     </popUpButton>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NDS-xP-mov" userLabel="Bottom Color Label">
+                        <rect key="frame" x="95" y="129" width="71" height="19"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Top Color:" id="HZ7-1A-AeS" userLabel="Cell">
+                            <font key="font" metaFont="system" size="14"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VRq-L0-2nh" userLabel="Bottom Color Button">
+                        <rect key="frame" x="170" y="125" width="142" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Red" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="TM9-hF-oNx" id="bS0-So-UIC" userLabel="Cell">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="hCJ-4l-xxA">
+                                <items>
+                                    <menuItem title="Red" state="on" image="Glyph-MenuItemImage" tag="1" id="TM9-hF-oNx" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
+                                                <color key="value" name="panicRed"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </menuItem>
+                                    <menuItem title="Orange" image="Glyph-MenuItemImage" tag="2" id="wwH-Za-kHW" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
+                                                <color key="value" name="panicOrange"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </menuItem>
+                                    <menuItem title="Yellow" image="Glyph-MenuItemImage" tag="3" id="IjO-TU-dyx" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
+                                                <color key="value" name="panicLemon"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </menuItem>
+                                    <menuItem title="Lemon" image="Glyph-MenuItemImage" tag="4" id="y0J-k9-jhX" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
+                                                <color key="value" name="panicLemon"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </menuItem>
+                                    <menuItem title="Green" image="Glyph-MenuItemImage" tag="5" id="e3S-5L-9cl" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
+                                                <color key="value" name="panicGreen"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </menuItem>
+                                    <menuItem title="Teal" image="Glyph-MenuItemImage" tag="6" id="dzj-9u-xVd" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
+                                                <color key="value" name="panicTeal"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </menuItem>
+                                    <menuItem title="Seafoam" image="Glyph-MenuItemImage" tag="7" id="Gdu-m4-JB7" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
+                                                <color key="value" name="panicSeafoam"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </menuItem>
+                                    <menuItem title="Blue" image="Glyph-MenuItemImage" tag="8" id="rIR-Zq-rox" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
+                                                <color key="value" name="panicBlue"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </menuItem>
+                                    <menuItem title="Navy" image="Glyph-MenuItemImage" tag="9" id="N1R-Bw-PuF" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
+                                                <color key="value" name="panicNavy"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </menuItem>
+                                    <menuItem title="Purple" image="Glyph-MenuItemImage" tag="10" id="cxK-rC-UIr" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
+                                                <color key="value" name="panicPurple"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </menuItem>
+                                    <menuItem title="Pink" image="Glyph-MenuItemImage" tag="11" id="wWZ-Je-vWS" customClass="PNCMenuItem" customModule="PanicSign" customModuleProvider="target">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTintColor">
+                                                <color key="value" name="panicPink"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="selectBottomColor:" target="-2" id="9c4-Yq-zJg"/>
+                        </connections>
+                    </popUpButton>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wWk-vL-zxO" userLabel="Close Button">
+                        <rect key="frame" x="256" y="13" width="59" height="32"/>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qbf-64-QQB">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="handleOkayButton:" target="-2" id="xxY-SW-ckw"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="wWk-vL-zxO" secondAttribute="bottom" constant="20" id="2qB-MV-pnY"/>

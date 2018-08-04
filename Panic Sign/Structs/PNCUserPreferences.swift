@@ -3,25 +3,20 @@ import ScreenSaver
 struct PNCUserPreferences {
     let defaults: ScreenSaverDefaults
 
-    var topColorName: String {
-        guard let name = self.defaults.string(forKey: "topColor") else {
-            fatalError("top color preference not set")
-        }
-        return name
+    var topColor: NSColor {
+        return self.color(option: .topColor).colorVal
     }
 
-    var topColor: NSColor {
-        guard let color = NSColor(named: self.topColorName) else {
-            return .panicSeafoam
-        }
-        return color
+    var topColorTag: Int {
+        return self.color(option: .topColor).rawValue
     }
 
     var bottomColor: NSColor {
-        guard let name = self.defaults.string(forKey: "panicBlue"), let color = NSColor(named: name) else {
-            return .panicBlue
-        }
-        return color
+        return self.color(option: .bottomColor).colorVal
+    }
+
+    var bottomColorTag: Int {
+        return self.color(option: .bottomColor).rawValue
     }
 
     init() {
@@ -30,9 +25,16 @@ struct PNCUserPreferences {
         }
         self.defaults = defaults
         self.register([
-            .topColor: "panicSeafoam",
-            .bottomColor: "panicBlue",
+            .topColor: PNCLogoColor.panicSeafoam.rawValue,
+            .bottomColor: PNCLogoColor.panicBlue.rawValue,
         ])
+    }
+
+    func color(option: PNCUserOption) -> PNCLogoColor {
+        guard let color = PNCLogoColor(rawValue: self.defaults.integer(forKey: option.rawValue)) else {
+            fatalError("\(option.rawValue) not set")
+        }
+        return color
     }
 
     func register(_ defaults: [PNCUserOption : Any]) {
