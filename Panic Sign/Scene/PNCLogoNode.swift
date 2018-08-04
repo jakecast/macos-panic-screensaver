@@ -13,7 +13,7 @@ class PNCLogoNode: SCNNode {
         super.init()
     }
 
-    convenience init?(opts: PNCLogoOptions) {
+    convenience init?(opts: PNCLogoGeometry) {
         guard opts.isValid else {
             return nil
         }
@@ -21,13 +21,13 @@ class PNCLogoNode: SCNNode {
         self.draw(opts: opts)
     }
 
-    func draw(opts: PNCLogoOptions) {
+    func draw(opts: PNCLogoGeometry) {
         let topPath = PNCTopPath(
             opts: opts)
         let topShape = SCNShape(
             path: topPath,
             extrusionDepth: 2.0,
-            color: .panicSeafoam)
+            color: .userTopColor)
         let topNode = SCNNode(
             geometry: topShape)
 
@@ -36,7 +36,7 @@ class PNCLogoNode: SCNNode {
         let bottomShape = SCNShape(
             path: bottomPath,
             extrusionDepth: 2.0,
-            color: .panicBlue)
+            color: .userBottomColor)
         let bottomNode = SCNNode(
             geometry: bottomShape)
 

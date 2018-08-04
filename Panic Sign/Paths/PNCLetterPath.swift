@@ -1,7 +1,7 @@
 import Cocoa
 
 class PNCLetterPath: NSBezierPath, PNCPathProtocol {
-    var opts: PNCLogoOptions?
+    var opts: PNCLogoGeometry?
 
     lazy var coords: [NSPoint] = self.makeCoords()
 

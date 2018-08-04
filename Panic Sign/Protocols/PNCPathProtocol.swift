@@ -1,13 +1,13 @@
 import Cocoa
 
 protocol PNCPathProtocol {
-    var opts: PNCLogoOptions? { get set }
+    var opts: PNCLogoGeometry? { get set }
 
     func draw()
 }
 
 extension PNCPathProtocol where Self : NSBezierPath {
-    init(opts: PNCLogoOptions) {
+    init(opts: PNCLogoGeometry) {
         self.init()
         self.opts = opts
         self.lineJoinStyle = .round

@@ -1,7 +1,7 @@
 import SceneKit
 
 class PNCSceneView: SCNView {
-    lazy var logoOptions: PNCLogoOptions = PNCLogoOptions(area: 20.0)
+    lazy var logoOptions: PNCLogoGeometry = PNCLogoGeometry(area: 20.0)
 
     func prepare() {
         self.backgroundColor = .black

@@ -1,6 +1,6 @@
 import Foundation
 
-struct PNCLogoOptions {
+struct PNCLogoGeometry {
     let radius: CGFloat
     let inflection: CGFloat
     let inset: CGFloat

@@ -4,11 +4,7 @@ import SceneKit
 class PNCScreenSaver: ScreenSaverView {
     lazy var preferencesController = PNCPreferencesController()
 
-    lazy var sceneView: PNCSceneView = PNCSceneView(
-        frame: self.bounds,
-        opts: [
-            .preferredRenderingAPI: .rendering(.metal),
-            .preferLowPowerDevice: .bool(true), ])
+    var sceneView: PNCSceneView?
 
     override var configureSheet: NSWindow? {
         return self.preferencesController.window
@@ -24,7 +20,24 @@ class PNCScreenSaver: ScreenSaverView {
 
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
-        self.sceneView.prepare()
-        self.addSubview(self.sceneView)
+        self.preferencesController.screenSaver = self
+        self.redrawScene()
+    }
+
+    func redrawScene() {
+        if let scene = self.sceneView {
+            self.unloadScene(scene)
+        }
+        self.sceneView = PNCSceneView(
+            frame: self.bounds,
+            opts: [
+                .preferredRenderingAPI: .rendering(.metal),
+                .preferLowPowerDevice: .bool(true), ])
+        self.sceneView?.prepare()
+        self.sceneView?.addTo(superview: self)
+    }
+
+    func unloadScene(_ scene: PNCSceneView) {
+        scene.removeFromSuperview()
     }
 }

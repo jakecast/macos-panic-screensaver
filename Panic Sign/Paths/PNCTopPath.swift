@@ -1,7 +1,7 @@
 import Cocoa
 
 class PNCTopPath: NSBezierPath, PNCPathProtocol {
-    var opts: PNCLogoOptions?
+    var opts: PNCLogoGeometry?
 
     func draw() {
         self.move(to: self.origin)

@@ -1,6 +1,14 @@
 import Cocoa
 
 extension NSColor {
+    class var userTopColor: NSColor {
+        return PNCUserPreferences.shared.topColor
+    }
+
+    class var userBottomColor: NSColor {
+        return PNCUserPreferences.shared.bottomColor
+    }
+
     class var panicBlue: NSColor {
         return NSColor(named: "panicBlue") ?? .white
     }

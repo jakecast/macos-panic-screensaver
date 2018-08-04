@@ -4,6 +4,10 @@ extension SCNView {
     convenience init(frame: NSRect, opts: [SCNView.Option : SCNViewSetting]? = nil) {
         self.init(
             frame: frame,
-            options: opts?.transform({ (key: SCNView.Option, value: SCNViewSetting) in (key.rawValue, value.rawValue) }))
+            options: opts?.transform({ ($0.rawValue, $1.rawValue) }))
+    }
+
+    func addTo(superview: NSView) {
+        superview.addSubview(self)
     }
 }
