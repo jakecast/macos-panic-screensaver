@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let screenSaver = self.screenSaver, let configure = screenSaver.configureSheet else {
             return
         }
-        self.window.beginSheet(configure, completionHandler: {[weak configure] (response) in
+        self.window.beginSheet(configure, completionHandler: { [weak configure] (response) in
             configure?.close()
         })
     }

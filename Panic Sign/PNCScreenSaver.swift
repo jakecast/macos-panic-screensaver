@@ -2,16 +2,20 @@ import ScreenSaver
 import SceneKit
 
 class PNCScreenSaver: ScreenSaverView {
-    lazy var preferencesController = PNCPreferencesController()
+    var sceneView: PNCSceneView? = nil
 
-    var sceneView: PNCSceneView?
+    lazy var preferences = PNCPreferencesController()
 
     override var configureSheet: NSWindow? {
-        return self.preferencesController.window
+        return self.preferences.window
     }
 
     override var hasConfigureSheet: Bool {
         return true
+    }
+
+    var notifier: NotificationCenter {
+        return .default
     }
 
     required init?(coder decoder: NSCoder) {
@@ -20,8 +24,8 @@ class PNCScreenSaver: ScreenSaverView {
 
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
-        self.preferencesController.screenSaver = self
         self.redrawScene()
+        self.notifier.addObserver(self, selector: #selector(preferencesDidChange), name: .preferencesDidChange, object: nil)
     }
 
     func redrawScene() {
@@ -39,5 +43,10 @@ class PNCScreenSaver: ScreenSaverView {
 
     func unloadScene(_ scene: PNCSceneView) {
         scene.removeFromSuperview()
+    }
+
+    @objc
+    func preferencesDidChange(_ notification: NSNotification?) {
+        self.redrawScene()
     }
 }

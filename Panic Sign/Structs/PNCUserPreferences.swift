@@ -3,10 +3,12 @@ import ScreenSaver
 struct PNCUserPreferences {
     let defaults: ScreenSaverDefaults
 
+    lazy var networkManager: PNCNetworkManager = PNCNetworkManager(preferences: self)
+
     var topColor: NSColor {
         return self.color(option: .topColor).colorVal
     }
-
+    
     var topColorTag: Int {
         return self.color(option: .topColor).rawValue
     }
@@ -19,6 +21,10 @@ struct PNCUserPreferences {
         return self.color(option: .bottomColor).rawValue
     }
 
+    var notificationCenter: NotificationCenter {
+        return .default
+    }
+
     init() {
         guard let id = PNCUserPreferences.bundle.bundleIdentifier, let defaults = ScreenSaverDefaults(forModuleWithName: id) else {
             fatalError("failed to load user preferences")
@@ -28,6 +34,7 @@ struct PNCUserPreferences {
             .topColor: PNCLogoColor.panicSeafoam.rawValue,
             .bottomColor: PNCLogoColor.panicBlue.rawValue,
         ])
+        self.networkManager.startPolling()
     }
 
     func color(option: PNCUserOption) -> PNCLogoColor {
@@ -41,12 +48,16 @@ struct PNCUserPreferences {
         self.defaults.register(defaults: defaults.transform({ ($0.rawValue, $1) }))
     }
 
-    func set(value: Any, key: PNCUserOption) {
-        self.defaults.set(value, forKey: key.rawValue)
+    func set(colorTag: Int, key: PNCUserOption) {
+        guard colorTag != self.color(option: key).rawValue else {
+            return
+        }
+        self.defaults.set(colorTag, forKey: key.rawValue)
+        self.notificationCenter.post(name: .preferencesDidChange)
     }
 }
 
 extension PNCUserPreferences {
-    static var bundle = Bundle(for: PNCScreenSaver.self)
-    static var shared = PNCUserPreferences()
+    static let bundle = Bundle(for: PNCScreenSaver.self)
+    static let shared = PNCUserPreferences()
 }

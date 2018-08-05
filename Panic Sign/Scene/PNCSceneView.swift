@@ -15,24 +15,21 @@ class PNCSceneView: SCNView {
             return
         }
 
-        let cameraNode = SCNNode()
-        cameraNode.name = "cameraNode"
+        let cameraNode = SCNNode(name: "cameraNode")
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3(x: 0.0, y: 0.0, z: 25.0)
 
 
-        let lightNode = SCNNode()
-        lightNode.name = "lightNode"
+        let lightNode = SCNNode(name: "lightNode")
         lightNode.light = SCNLight()
         lightNode.light?.type = .omni
         lightNode.position = SCNVector3(x: 0.0, y: 500.0, z: 1000.0)
 
 
-        let ambientNode = SCNNode()
-        ambientNode.name = "ambientNode"
+        let ambientNode = SCNNode(name: "ambientNode")
         ambientNode.light = SCNLight()
         ambientNode.light?.type = .ambient
-        ambientNode.light?.color = NSColor.darkGray
+        ambientNode.light?.nscolor = .darkGray
 
         scene.rootNode.addChildNode(cameraNode)
         scene.rootNode.addChildNode(lightNode)
@@ -46,52 +43,10 @@ class PNCSceneView: SCNView {
         guard let scene = self.scene else {
             fatalError("missing scene")
         }
-
         guard let logo = PNCLogoNode(opts: self.logoOptions) else {
             fatalError("invalid logo options")
         }
-
         scene.rootNode.addChildNode(logo.flatNode)
-
-
-
-//        let logo = Logo(size: 20.0, inset: 10.0)
-//
-//        let upperPath = logo.drawUpperBackground()
-//        upperPath.lineJoinStyle = .round
-//        upperPath.flatness = 0.01
-//
-//        let upperShape = SCNShape(path: upperPath, extrusionDepth: 2.0)
-//        upperShape.color = .panicSeafoam
-//
-//        let lowerPath = logo.drawLowerBackground()
-//        lowerPath.lineJoinStyle = .round
-//        lowerPath.flatness = 0.01
-//
-//        let lowerShape = SCNShape(path: lowerPath, extrusionDepth: 2.0)
-//        lowerShape.color = .panicBlue
-//
-//        let centerPath = logo.drawLetter()
-//        centerPath.lineJoinStyle = .round
-//        centerPath.flatness = 0.01
-//
-//        let centerShape = SCNShape(path: centerPath, extrusionDepth: 3)
-//        centerShape.firstMaterial?.diffuse.contents = NSColor.white
-//
-//        let logoNode = SCNNode()
-//        logoNode.addChildNode(SCNNode(geometry: upperShape))
-//        logoNode.addChildNode(SCNNode(geometry: lowerShape))
-//        logoNode.addChildNode(SCNNode(geometry: centerShape))
-//
-//        let presNode = logoNode.flattenedClone()
-//        presNode.name = "logoNode"
-//        presNode.position = SCNVector3(0.0, 0.0, 0.0)
-//        presNode.rotation = SCNVector4(1.0, 1.0, 0.0, 0.0)
-//
-//        scene.rootNode.addChildNode(presNode)
-
-//        self.logoShouldRotate()
-//        self.logoShouldMove()
     }
 
 //    func logoShouldMove() {

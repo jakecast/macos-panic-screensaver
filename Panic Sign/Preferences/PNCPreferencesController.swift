@@ -2,15 +2,14 @@ import AppKit
 import ScreenSaver
 
 class PNCPreferencesController: NSWindowController {
-    let preferences: PNCUserPreferences = .shared
-
-    weak var screenSaver: PNCScreenSaver?
-
     @IBOutlet
     weak var topColorButton: NSPopUpButton!
-
     @IBOutlet
     weak var bottomColorButton: NSPopUpButton!
+    
+    var preferences: PNCUserPreferences {
+        return .shared
+    }
 
     convenience init() {
         self.init(window: nil)
@@ -32,20 +31,18 @@ class PNCPreferencesController: NSWindowController {
 
     @IBAction
     func selectTopColor(_ popUpButton: NSPopUpButton) {
-        guard let name = popUpButton.selectedItem?.tag else {
+        guard let tag = popUpButton.selectedItem?.tag else {
             return
         }
-        self.preferences.set(value: name, key: .topColor)
-        self.screenSaver?.redrawScene()
+        self.preferences.set(colorTag: tag, key: .topColor)
     }
 
     @IBAction
     func selectBottomColor(_ popUpButton: NSPopUpButton) {
-        guard let name = popUpButton.selectedItem?.tag else {
+        guard let tag = popUpButton.selectedItem?.tag else {
             return
         }
-        self.preferences.set(value: name, key: .bottomColor)
-        self.screenSaver?.redrawScene()
+        self.preferences.set(colorTag: tag, key: .bottomColor)
     }
 
     @IBAction

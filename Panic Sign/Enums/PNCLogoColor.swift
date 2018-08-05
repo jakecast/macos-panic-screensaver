@@ -2,8 +2,8 @@ import AppKit
 
 enum PNCLogoColor: Int {
     case panicRed = 1
-    case panicYellow = 2
-    case panicOrange = 3
+    case panicOrange = 2
+    case panicYellow = 3
     case panicLemon = 4
     case panicGreen = 5
     case panicTeal = 6
@@ -13,13 +13,17 @@ enum PNCLogoColor: Int {
     case panicPurple = 10
     case panicPink = 11
 
-    init?(_ name: String) {
+    init?(_ name: String?) {
+        guard let name = name else {
+            return nil
+        }
+        
         switch name {
         case "panicRed":
             self = .panicRed
         case "panicYellow":
             self = .panicYellow
-        case "panicOrange":
+        case "panicOrange", "orange":
             self = .panicOrange
         case "panicLemon":
             self = .panicLemon
