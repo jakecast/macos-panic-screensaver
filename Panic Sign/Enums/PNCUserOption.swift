@@ -13,7 +13,6 @@ enum PNCUserOption: String {
             .bottomColor: PNCLogoColor.panicBlue.rawValue,
             .usePanicSignColors: false,
             .showDebugInfo: false,
-            .showTime: false,
-        ]
+            .showTime: false, ]
     }
 }

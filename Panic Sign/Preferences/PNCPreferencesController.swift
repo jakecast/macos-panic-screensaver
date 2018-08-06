@@ -8,6 +8,12 @@ class PNCPreferencesController: NSWindowController {
     weak var bottomColorButton: NSPopUpButton!
     @IBOutlet
     weak var matchPanicSignButton: NSButton!
+    @IBOutlet
+    weak var showDebugInfo: NSButton!
+
+    var notifier: NotificationCenter {
+        return .default
+    }
 
     var preferences: PNCUserPreferences {
         return .shared
@@ -26,20 +32,29 @@ class PNCPreferencesController: NSWindowController {
         self.matchButtonStateNeedsUpdate()
         self.popUpButtonEnabledNeedsUpdate()
         self.popUpButtonColorsNeedUpdate()
+        self.notifier.addObserver(self, selector: #selector(preferencesDidChange), name: .preferencesDidChange, object: nil)
+    }
+
+    func debugButtonStateNeedsUpdate() {
+        self.showDebugInfo.state = .showDebugInfo ? .on : .off
     }
 
     func matchButtonStateNeedsUpdate() {
-        self.matchPanicSignButton.state = self.preferences.usePanicSignColors ? .on : .off
+        self.matchPanicSignButton.state = .usePanicSignColors ? .on : .off
     }
 
     func popUpButtonEnabledNeedsUpdate() {
-        self.topColorButton.isEnabled = self.preferences.usePanicSignColors ? false : true
-        self.bottomColorButton.isEnabled = self.preferences.usePanicSignColors ? false : true
+        self.topColorButton.isEnabled = .usePanicSignColors ? false : true
+        self.bottomColorButton.isEnabled = .usePanicSignColors ? false : true
     }
 
     func popUpButtonColorsNeedUpdate() {
-        self.topColorButton.selectItem(withTag: self.preferences.topColorTag)
-        self.bottomColorButton.selectItem(withTag: self.preferences.bottomColorTag)
+        if self.preferences.topColorTag != self.topColorButton.selectedItem?.tag {
+            self.topColorButton.selectItem(withTag: self.preferences.topColorTag)
+        }
+        if self.preferences.bottomColorTag != self.bottomColorButton.selectedItem?.tag {
+            self.bottomColorButton.selectItem(withTag: self.preferences.bottomColorTag)
+        }
     }
 
     @IBAction
@@ -47,7 +62,7 @@ class PNCPreferencesController: NSWindowController {
         guard let tag = popUpButton.selectedItem?.tag else {
             return
         }
-        self.preferences.set(colorTag: tag, key: .topColor)
+        self.preferences.setColor(tag: tag, key: .topColor)
     }
 
     @IBAction
@@ -55,16 +70,27 @@ class PNCPreferencesController: NSWindowController {
         guard let tag = popUpButton.selectedItem?.tag else {
             return
         }
-        self.preferences.set(colorTag: tag, key: .bottomColor)
+        self.preferences.setColor(tag: tag, key: .bottomColor)
     }
 
     @IBAction
     func handleMatchPanicSignButton(_ matchButton: NSButton) {
-//        self.preferences.set
+        self.preferences.setUsePanicSignColors(enabled: matchButton.state == .on)
+        self.popUpButtonEnabledNeedsUpdate()
+    }
+
+    @IBAction
+    func handleShowDebugInfoButton(_ debugButton: NSButton) {
+        self.preferences.setShowDebugInfo(enabled: debugButton.state == .on)
     }
 
     @IBAction
     func handleOkayButton(_ sender: Any?) {
         self.window?.close()
+    }
+
+    @objc
+    func preferencesDidChange(_ notification: NSNotification?) {
+        self.popUpButtonColorsNeedUpdate()
     }
 }

@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="bottomColorButton" destination="VRq-L0-2nh" id="O0d-Kq-hhd"/>
                 <outlet property="matchPanicSignButton" destination="E5v-cR-h45" id="MXN-ms-8Bz"/>
+                <outlet property="showDebugInfo" destination="ZvR-Ra-7AP" id="PSC-33-3FF"/>
                 <outlet property="topColorButton" destination="MDQ-Ec-23h" id="lzI-uV-WsV"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="D8Y-oi-hD4"/>
             </connections>
@@ -27,7 +28,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fMx-Gy-jGn" userLabel="Top Color Label">
-                        <rect key="frame" x="71" y="237" width="71" height="19"/>
+                        <rect key="frame" x="71" y="238" width="71" height="18"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Top Color:" id="WLp-r4-xmg" userLabel="Cell">
                             <font key="font" metaFont="system" size="14"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -126,7 +127,7 @@
                         </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NDS-xP-mov" userLabel="Bottom Color Label">
-                        <rect key="frame" x="48" y="194" width="94" height="19"/>
+                        <rect key="frame" x="48" y="196" width="94" height="18"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Bottom Color:" id="HZ7-1A-AeS" userLabel="Cell">
                             <font key="font" metaFont="system" size="14"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -134,7 +135,7 @@
                         </textFieldCell>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VRq-L0-2nh" userLabel="Bottom Color Button">
-                        <rect key="frame" x="146" y="189" width="113" height="26"/>
+                        <rect key="frame" x="146" y="190" width="113" height="26"/>
                         <popUpButtonCell key="cell" type="push" title="Red" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="TM9-hF-oNx" id="bS0-So-UIC" userLabel="Cell">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
@@ -225,7 +226,7 @@
                         </connections>
                     </popUpButton>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8iX-Kz-aPj" userLabel="Panic Icon Image">
-                        <rect key="frame" x="120" y="150" width="20" height="20"/>
+                        <rect key="frame" x="120" y="152" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="zmf-u9-PdR"/>
                             <constraint firstAttribute="height" constant="20" id="ztd-lk-gdf"/>
@@ -233,7 +234,7 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Icon-PanicLogo" id="lWR-oL-wZo"/>
                     </imageView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E5v-cR-h45">
-                        <rect key="frame" x="146" y="151" width="170" height="18"/>
+                        <rect key="frame" x="146" y="153" width="170" height="18"/>
                         <buttonCell key="cell" type="check" title="Match Panic Sign Colors" bezelStyle="regularSquare" imagePosition="left" inset="2" id="phH-68-4H5">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -242,6 +243,14 @@
                             <action selector="handleMatchPanicSignButton:" target="-2" id="ObO-K0-Euw"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0pW-TQ-C4C" userLabel="Debug Label">
+                        <rect key="frame" x="91" y="110" width="51" height="18"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Debug:" id="m8y-Fu-DX7" userLabel="Cell">
+                            <font key="font" metaFont="system" size="14"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wWk-vL-zxO" userLabel="Close Button">
                         <rect key="frame" x="349" y="11" width="59" height="32"/>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qbf-64-QQB">
@@ -255,6 +264,16 @@ DQ
                             <action selector="handleOkayButton:" target="-2" id="xxY-SW-ckw"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZvR-Ra-7AP">
+                        <rect key="frame" x="146" y="108" width="173" height="18"/>
+                        <buttonCell key="cell" type="check" title="Show SceneKit Statistics" bezelStyle="regularSquare" imagePosition="left" inset="2" id="TPs-cd-QaQ">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="handleShowDebugInfoButton:" target="-2" id="Vtr-UD-ATE"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="NDS-xP-mov" firstAttribute="top" secondItem="fMx-Gy-jGn" secondAttribute="bottom" constant="24" id="0C9-pF-dTj"/>
@@ -262,15 +281,19 @@ DQ
                     <constraint firstAttribute="bottom" secondItem="wWk-vL-zxO" secondAttribute="bottom" constant="18" id="2qB-MV-pnY"/>
                     <constraint firstItem="MDQ-Ec-23h" firstAttribute="leading" secondItem="fMx-Gy-jGn" secondAttribute="trailing" constant="8" id="Ax5-fL-dWe"/>
                     <constraint firstItem="8iX-Kz-aPj" firstAttribute="top" secondItem="NDS-xP-mov" secondAttribute="bottom" constant="24" id="Bjt-ws-dSS"/>
+                    <constraint firstItem="0pW-TQ-C4C" firstAttribute="top" secondItem="8iX-Kz-aPj" secondAttribute="bottom" constant="24" id="HW4-de-o9n"/>
                     <constraint firstAttribute="trailing" secondItem="fMx-Gy-jGn" secondAttribute="trailing" multiplier="3/1" id="IKI-D1-Td6"/>
                     <constraint firstItem="VRq-L0-2nh" firstAttribute="top" secondItem="NDS-xP-mov" secondAttribute="top" id="ISY-Dk-NIS"/>
                     <constraint firstItem="MDQ-Ec-23h" firstAttribute="top" secondItem="fMx-Gy-jGn" secondAttribute="top" id="L6S-gu-aMM"/>
                     <constraint firstItem="E5v-cR-h45" firstAttribute="centerY" secondItem="8iX-Kz-aPj" secondAttribute="centerY" id="VpU-m3-kGe"/>
+                    <constraint firstItem="ZvR-Ra-7AP" firstAttribute="bottom" secondItem="0pW-TQ-C4C" secondAttribute="bottom" id="YWy-tb-3bZ"/>
+                    <constraint firstAttribute="trailing" secondItem="0pW-TQ-C4C" secondAttribute="trailing" multiplier="3/1" id="ZhN-wf-r1M"/>
                     <constraint firstAttribute="trailing" secondItem="NDS-xP-mov" secondAttribute="trailing" multiplier="3/1" id="ewM-j9-bi0"/>
                     <constraint firstItem="E5v-cR-h45" firstAttribute="leading" secondItem="8iX-Kz-aPj" secondAttribute="trailing" constant="8" id="pMr-2m-xXF"/>
                     <constraint firstItem="fMx-Gy-jGn" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="24" id="qjS-1v-DQQ"/>
                     <constraint firstAttribute="trailing" secondItem="8iX-Kz-aPj" secondAttribute="trailing" multiplier="3/1" id="uiB-2c-AEe"/>
                     <constraint firstAttribute="trailing" secondItem="wWk-vL-zxO" secondAttribute="trailing" constant="18" id="x4s-JH-SsT"/>
+                    <constraint firstItem="ZvR-Ra-7AP" firstAttribute="leading" secondItem="0pW-TQ-C4C" secondAttribute="trailing" constant="8" id="xkL-bT-4f1"/>
                 </constraints>
             </view>
         </window>

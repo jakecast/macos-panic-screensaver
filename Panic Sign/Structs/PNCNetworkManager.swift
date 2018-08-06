@@ -4,18 +4,21 @@ class PNCNetworkManager {
     var timer: Timer?
     var task: URLSessionDataTask?
 
-    var preferences: PNCUserPreferences?
+    var preferences: PNCUserPreferences {
+        return .shared
+    }
 
     var session: URLSession {
         return .shared
     }
 
-    required init(preferences: PNCUserPreferences) {
-        self.preferences = preferences
-    }
-
-    deinit {
-        self.preferences = nil
+    func updatePolling(enabled: Bool) {
+        switch enabled {
+        case true:
+            self.startPolling()
+        case false:
+            self.stopPolling()
+        }
     }
 
     func startPolling() {
@@ -56,8 +59,8 @@ class PNCNetworkManager {
         guard let bottomColor = PNCLogoColor(colors[PNCUserOption.bottomColor.rawValue]) else {
             return
         }
-        self.preferences?.set(colorTag: topColor.rawValue, key: .topColor)
-        self.preferences?.set(colorTag: bottomColor.rawValue, key: .bottomColor)
+        self.preferences.setColor(tag: topColor.rawValue, key: .topColor)
+        self.preferences.setColor(tag: bottomColor.rawValue, key: .bottomColor)
     }
 }
 

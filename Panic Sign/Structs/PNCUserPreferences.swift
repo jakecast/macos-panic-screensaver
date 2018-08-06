@@ -2,27 +2,30 @@ import ScreenSaver
 
 struct PNCUserPreferences {
     let defaults: ScreenSaverDefaults
-
-    lazy var networkManager: PNCNetworkManager = PNCNetworkManager(preferences: self)
+    let networkManager: PNCNetworkManager = PNCNetworkManager()
 
     var topColor: NSColor {
-        return self.color(option: .topColor).colorVal
+        return self.defaults.color(option: .topColor).colorVal
     }
     
     var topColorTag: Int {
-        return self.color(option: .topColor).rawValue
+        return self.defaults.color(option: .topColor).rawValue
     }
 
     var bottomColor: NSColor {
-        return self.color(option: .bottomColor).colorVal
+        return self.defaults.color(option: .bottomColor).colorVal
     }
 
     var bottomColorTag: Int {
-        return self.color(option: .bottomColor).rawValue
+        return self.defaults.color(option: .bottomColor).rawValue
     }
 
     var usePanicSignColors: Bool {
-        return self.bool(option: .usePanicSignColors)
+        return self.defaults.bool(option: .usePanicSignColors)
+    }
+
+    var showDebugInfo: Bool {
+        return self.defaults.bool(option: .showDebugInfo)
     }
 
     var notificationCenter: NotificationCenter {
@@ -34,29 +37,31 @@ struct PNCUserPreferences {
             fatalError("failed to load user preferences")
         }
         self.defaults = defaults
-        self.register(PNCUserOption.defaults)
+        self.defaults.register(panicUserOptions: PNCUserOption.defaults)
+        self.networkManager.updatePolling(enabled: self.usePanicSignColors)
     }
 
-    func bool(option: PNCUserOption) -> Bool {
-        return self.defaults.bool(forKey: option.rawValue)
-    }
-
-    func color(option: PNCUserOption) -> PNCLogoColor {
-        guard let color = PNCLogoColor(rawValue: self.defaults.integer(forKey: option.rawValue)) else {
-            fatalError("\(option.rawValue) not set")
-        }
-        return color
-    }
-
-    func register(_ defaults: [PNCUserOption : Any]) {
-        self.defaults.register(defaults: defaults.transform({ ($0.rawValue, $1) }))
-    }
-
-    func set(colorTag: Int, key: PNCUserOption) {
-        guard colorTag != self.color(option: key).rawValue else {
+    func setColor(tag: Int, key: PNCUserOption) {
+        guard tag != self.defaults.color(option: key).rawValue else {
             return
         }
-        self.defaults.set(colorTag, forKey: key.rawValue)
+        self.defaults.set(tag, option: key)
+        self.notificationCenter.post(name: .preferencesDidChange)
+    }
+
+    func setUsePanicSignColors(enabled: Bool) {
+        guard self.usePanicSignColors != enabled else {
+            return
+        }
+        self.defaults.set(enabled, option: .usePanicSignColors)
+        self.networkManager.updatePolling(enabled: enabled)
+    }
+
+    func setShowDebugInfo(enabled: Bool) {
+        guard self.showDebugInfo != enabled else {
+            return
+        }
+        self.defaults.set(enabled, option: .showDebugInfo)
         self.notificationCenter.post(name: .preferencesDidChange)
     }
 }

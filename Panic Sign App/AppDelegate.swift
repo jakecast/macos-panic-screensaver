@@ -8,12 +8,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet
     weak var window: NSWindow!
+    @IBOutlet
+    weak var view: NSView!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        guard let contentView = self.window.contentView, let screenSaver = self.screenSaver else {
+        guard let screenSaver = self.screenSaver else {
             fatalError("missing content view or screensaver view")
         }
-        contentView.addSubview(screenSaver)
+        screenSaver.addTo(superview: self.view)
         screenSaver.startAnimation()
     }
 

@@ -29,20 +29,34 @@ class PNCScreenSaver: ScreenSaverView {
     }
 
     func redrawScene() {
-        if let scene = self.sceneView {
-            self.unloadScene(scene)
+        guard self.sceneView == nil else {
+            return self.transitionScene(toScene: self.newScene())
         }
-        self.sceneView = PNCSceneView(
-            frame: self.bounds,
-            opts: [
-                .preferredRenderingAPI: .rendering(.metal),
-                .preferLowPowerDevice: .bool(true), ])
+        self.sceneView = self.newScene()
         self.sceneView?.prepare()
         self.sceneView?.addTo(superview: self)
     }
 
     func unloadScene(_ scene: PNCSceneView) {
         scene.removeFromSuperview()
+    }
+
+    func transitionScene(toScene: PNCSceneView) {
+        guard let fromScene = self.sceneView else {
+            return
+        }
+        self.sceneView = toScene
+        self.replaceSubview(fromScene, with: toScene)
+
+    }
+
+    func newScene() -> PNCSceneView {
+        return PNCSceneView(
+            frame: self.bounds,
+            prepare: true,
+            opts: [
+                .preferredRenderingAPI: .rendering(.metal),
+                .preferLowPowerDevice: .bool(true), ])
     }
 
     @objc

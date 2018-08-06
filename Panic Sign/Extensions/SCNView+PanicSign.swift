@@ -6,8 +6,4 @@ extension SCNView {
             frame: frame,
             options: opts?.transform({ ($0.rawValue, $1.rawValue) }))
     }
-
-    func addTo(superview: NSView) {
-        superview.addSubview(self)
-    }
 }

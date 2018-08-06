@@ -3,6 +3,20 @@ import SceneKit
 class PNCSceneView: SCNView {
     lazy var logoOptions: PNCLogoGeometry = PNCLogoGeometry(area: 20.0)
 
+    required init?(coder decoder: NSCoder) {
+        super.init(coder: decoder)
+    }
+
+    init(frame: NSRect, prepare: Bool, opts: [SCNView.Option : SCNViewSetting]? = nil) {
+        super.init(
+            frame: frame,
+            options: opts?.transform({ ($0.rawValue, $1.rawValue) }))
+
+        if prepare {
+            self.prepare()
+        }
+    }
+
     func prepare() {
         self.backgroundColor = .black
         self.scene = SCNScene()
@@ -35,8 +49,7 @@ class PNCSceneView: SCNView {
         scene.rootNode.addChildNode(lightNode)
         scene.rootNode.addChildNode(ambientNode)
 
-//        self.allowsCameraControl = true
-        self.showsStatistics = true
+        self.showsStatistics = .showDebugInfo
     }
 
     func addLogo() {
