@@ -21,6 +21,10 @@ struct PNCUserPreferences {
         return self.color(option: .bottomColor).rawValue
     }
 
+    var usePanicSignColors: Bool {
+        return self.bool(option: .usePanicSignColors)
+    }
+
     var notificationCenter: NotificationCenter {
         return .default
     }
@@ -30,11 +34,11 @@ struct PNCUserPreferences {
             fatalError("failed to load user preferences")
         }
         self.defaults = defaults
-        self.register([
-            .topColor: PNCLogoColor.panicSeafoam.rawValue,
-            .bottomColor: PNCLogoColor.panicBlue.rawValue,
-        ])
-        self.networkManager.startPolling()
+        self.register(PNCUserOption.defaults)
+    }
+
+    func bool(option: PNCUserOption) -> Bool {
+        return self.defaults.bool(forKey: option.rawValue)
     }
 
     func color(option: PNCUserOption) -> PNCLogoColor {

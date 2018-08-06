@@ -6,7 +6,9 @@ class PNCPreferencesController: NSWindowController {
     weak var topColorButton: NSPopUpButton!
     @IBOutlet
     weak var bottomColorButton: NSPopUpButton!
-    
+    @IBOutlet
+    weak var matchPanicSignButton: NSButton!
+
     var preferences: PNCUserPreferences {
         return .shared
     }
@@ -21,10 +23,21 @@ class PNCPreferencesController: NSWindowController {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.popUpButtonsNeedUpdate()
+        self.matchButtonStateNeedsUpdate()
+        self.popUpButtonEnabledNeedsUpdate()
+        self.popUpButtonColorsNeedUpdate()
     }
 
-    func popUpButtonsNeedUpdate() {
+    func matchButtonStateNeedsUpdate() {
+        self.matchPanicSignButton.state = self.preferences.usePanicSignColors ? .on : .off
+    }
+
+    func popUpButtonEnabledNeedsUpdate() {
+        self.topColorButton.isEnabled = self.preferences.usePanicSignColors ? false : true
+        self.bottomColorButton.isEnabled = self.preferences.usePanicSignColors ? false : true
+    }
+
+    func popUpButtonColorsNeedUpdate() {
         self.topColorButton.selectItem(withTag: self.preferences.topColorTag)
         self.bottomColorButton.selectItem(withTag: self.preferences.bottomColorTag)
     }
@@ -43,6 +56,11 @@ class PNCPreferencesController: NSWindowController {
             return
         }
         self.preferences.set(colorTag: tag, key: .bottomColor)
+    }
+
+    @IBAction
+    func handleMatchPanicSignButton(_ matchButton: NSButton) {
+//        self.preferences.set
     }
 
     @IBAction

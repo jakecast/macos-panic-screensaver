@@ -1,8 +1,6 @@
 import Foundation
 
 class PNCNetworkManager {
-//    static let shared: PNCNetworkManager = PNCNetworkManager()
-
     var timer: Timer?
     var task: URLSessionDataTask?
 
