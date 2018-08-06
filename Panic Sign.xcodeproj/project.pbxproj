@@ -49,6 +49,12 @@
 		236D049A2118D0750057ADC3 /* Bool+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D04982118D0680057ADC3 /* Bool+PanicSign.swift */; };
 		236D049E2118D8300057ADC3 /* NSView+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D049D2118D8300057ADC3 /* NSView+PanicSign.swift */; };
 		236D049F2118D83C0057ADC3 /* NSView+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D049D2118D8300057ADC3 /* NSView+PanicSign.swift */; };
+		236D04A12118DC650057ADC3 /* CAMediaTimingFunction+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D04A02118DC650057ADC3 /* CAMediaTimingFunction+PanicSign.swift */; };
+		236D04A22118DCCC0057ADC3 /* CAMediaTimingFunction+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D04A02118DC650057ADC3 /* CAMediaTimingFunction+PanicSign.swift */; };
+		236D04B02118E7A30057ADC3 /* IOPMPowerFlags+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D04AF2118E7A30057ADC3 /* IOPMPowerFlags+PanicSign.swift */; };
+		236D04B12118E7B70057ADC3 /* IOPMPowerFlags+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D04AF2118E7A30057ADC3 /* IOPMPowerFlags+PanicSign.swift */; };
+		236D04B32118E88B0057ADC3 /* CGDirectDisplay+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D04B22118E88B0057ADC3 /* CGDirectDisplay+PanicSign.swift */; };
+		236D04B42118E9360057ADC3 /* CGDirectDisplay+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D04B22118E88B0057ADC3 /* CGDirectDisplay+PanicSign.swift */; };
 		237AC668211629A100627644 /* NSImage+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237AC667211629A100627644 /* NSImage+PanicSign.swift */; };
 		237AC669211629A700627644 /* NSImage+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237AC667211629A100627644 /* NSImage+PanicSign.swift */; };
 		237AC66A21162B5400627644 /* PNCMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233D3F2A2114DAA900FB39B8 /* PNCMenuItem.swift */; };
@@ -85,6 +91,8 @@
 		237FB1332110EFCD004C3D14 /* PNCLetterPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237FB12D2110EE5B004C3D14 /* PNCLetterPath.swift */; };
 		23BBF2AB21166F8600B58B2C /* URLSession+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBF2AA21166F8600B58B2C /* URLSession+PanicSign.swift */; };
 		23BBF2AC2116709D00B58B2C /* URLSession+PanicSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBF2AA21166F8600B58B2C /* URLSession+PanicSign.swift */; };
+		23C19E1C2118FF7E00F35982 /* PNCPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C19E1B2118FF7E00F35982 /* PNCPopUpButton.swift */; };
+		23C19E1D2118FF9F00F35982 /* PNCPopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C19E1B2118FF7E00F35982 /* PNCPopUpButton.swift */; };
 		23FA88D12108F38700B7E751 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FA88D02108F38700B7E751 /* AppDelegate.swift */; };
 		23FA88D32108F38800B7E751 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23FA88D22108F38800B7E751 /* Assets.xcassets */; };
 		23FA88D62108F38800B7E751 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23FA88D42108F38800B7E751 /* MainMenu.xib */; };
@@ -113,6 +121,9 @@
 		236D04952118CBDC0057ADC3 /* UserDefaults+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+PanicSign.swift"; sourceTree = "<group>"; };
 		236D04982118D0680057ADC3 /* Bool+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+PanicSign.swift"; sourceTree = "<group>"; };
 		236D049D2118D8300057ADC3 /* NSView+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+PanicSign.swift"; sourceTree = "<group>"; };
+		236D04A02118DC650057ADC3 /* CAMediaTimingFunction+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAMediaTimingFunction+PanicSign.swift"; sourceTree = "<group>"; };
+		236D04AF2118E7A30057ADC3 /* IOPMPowerFlags+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IOPMPowerFlags+PanicSign.swift"; sourceTree = "<group>"; };
+		236D04B22118E88B0057ADC3 /* CGDirectDisplay+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGDirectDisplay+PanicSign.swift"; sourceTree = "<group>"; };
 		237AC667211629A100627644 /* NSImage+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+PanicSign.swift"; sourceTree = "<group>"; };
 		237AC66F211632C700627644 /* NSRect+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRect+PanicSign.swift"; sourceTree = "<group>"; };
 		237AC6722116363300627644 /* PNCUserOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCUserOption.swift; sourceTree = "<group>"; };
@@ -130,6 +141,7 @@
 		237FB12B2110EE51004C3D14 /* PNCBottomPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCBottomPath.swift; sourceTree = "<group>"; };
 		237FB12D2110EE5B004C3D14 /* PNCLetterPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCLetterPath.swift; sourceTree = "<group>"; };
 		23BBF2AA21166F8600B58B2C /* URLSession+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+PanicSign.swift"; sourceTree = "<group>"; };
+		23C19E1B2118FF7E00F35982 /* PNCPopUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCPopUpButton.swift; sourceTree = "<group>"; };
 		23FA88BB2108EBFF00B7E751 /* Panic Sign.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Panic Sign.saver"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23FA88C22108EBFF00B7E751 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23FA88CE2108F38700B7E751 /* Panic Sign App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Panic Sign App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +185,7 @@
 			children = (
 				232E7BCD211391F80021F4C7 /* PNCPreferencesController.xib */,
 				232E7BCA211391D50021F4C7 /* PNCPreferencesController.swift */,
+				23C19E1B2118FF7E00F35982 /* PNCPopUpButton.swift */,
 				233D3F2A2114DAA900FB39B8 /* PNCMenuItem.swift */,
 			);
 			path = Preferences;
@@ -181,8 +194,8 @@
 		23619D8D211041FD00C1C99E /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				23619D8E211047DF00C1C99E /* PNCLogoNode.swift */,
 				23619D8A2110416800C1C99E /* PNCSceneView.swift */,
+				23619D8E211047DF00C1C99E /* PNCLogoNode.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -200,9 +213,12 @@
 			children = (
 				236D04982118D0680057ADC3 /* Bool+PanicSign.swift */,
 				237FB10F2110D7E1004C3D14 /* Dictionary+PanicSign.swift */,
+				236D04B22118E88B0057ADC3 /* CGDirectDisplay+PanicSign.swift */,
+				236D04A02118DC650057ADC3 /* CAMediaTimingFunction+PanicSign.swift */,
 				237FB1212110DFFA004C3D14 /* CGFloat+PanicSign.swift */,
 				232E7BC621138DE10021F4C7 /* CGSize+PanicSign.swift */,
 				237FB1232110E286004C3D14 /* Int+PanicSign.swift */,
+				236D04AF2118E7A30057ADC3 /* IOPMPowerFlags+PanicSign.swift */,
 				234E3DC52117899400F5A124 /* NotificationCenter+PanicSign.swift */,
 				234E3DC1211787BD00F5A124 /* NotificationName+PanicSign.swift */,
 				237FB1022110CE6F004C3D14 /* NSColor+PanicSign.swift */,
@@ -431,9 +447,11 @@
 				232E7BC421138B910021F4C7 /* SCNShape+PanicSign.swift in Sources */,
 				23085124211664C200648E49 /* PNCLogoColor.swift in Sources */,
 				237FB1102110D7E1004C3D14 /* Dictionary+PanicSign.swift in Sources */,
+				23C19E1C2118FF7E00F35982 /* PNCPopUpButton.swift in Sources */,
 				236D049E2118D8300057ADC3 /* NSView+PanicSign.swift in Sources */,
 				23619D8F211047DF00C1C99E /* PNCLogoNode.swift in Sources */,
 				234E3DC2211787BD00F5A124 /* NotificationName+PanicSign.swift in Sources */,
+				236D04A12118DC650057ADC3 /* CAMediaTimingFunction+PanicSign.swift in Sources */,
 				234E3DB82117826900F5A124 /* URL+PanicSign.swift in Sources */,
 				2329E1E7210BC231007606A5 /* PNCScreenSaver.swift in Sources */,
 				234E3DBE2117861300F5A124 /* PNCNetworkManager.swift in Sources */,
@@ -454,11 +472,13 @@
 				237FB1222110DFFA004C3D14 /* CGFloat+PanicSign.swift in Sources */,
 				232E7BCB211391D50021F4C7 /* PNCPreferencesController.swift in Sources */,
 				23619D8B2110416800C1C99E /* PNCSceneView.swift in Sources */,
+				236D04B32118E88B0057ADC3 /* CGDirectDisplay+PanicSign.swift in Sources */,
 				232E7BD1211393250021F4C7 /* PNCUserPreferences.swift in Sources */,
 				237FB11D2110DD49004C3D14 /* SCNNode+PanicSign.swift in Sources */,
 				234E3DC62117899400F5A124 /* NotificationCenter+PanicSign.swift in Sources */,
 				234E3DBB2117849700F5A124 /* PNCLogoError.swift in Sources */,
 				232E7BC721138DE10021F4C7 /* CGSize+PanicSign.swift in Sources */,
+				236D04B02118E7A30057ADC3 /* IOPMPowerFlags+PanicSign.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,16 +486,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23C19E1D2118FF9F00F35982 /* PNCPopUpButton.swift in Sources */,
 				232E7BCC211391D50021F4C7 /* PNCPreferencesController.swift in Sources */,
 				237FB10D2110D570004C3D14 /* SCNView+PanicSign.swift in Sources */,
 				232E7BC821138DE50021F4C7 /* CGSize+PanicSign.swift in Sources */,
 				23FA88D12108F38700B7E751 /* AppDelegate.swift in Sources */,
 				234E3DC8211789FE00F5A124 /* PNCNetworkManager.swift in Sources */,
+				236D04A22118DCCC0057ADC3 /* CAMediaTimingFunction+PanicSign.swift in Sources */,
 				230851252116668D00648E49 /* PNCLogoColor.swift in Sources */,
+				236D04B12118E7B70057ADC3 /* IOPMPowerFlags+PanicSign.swift in Sources */,
 				237FB1322110EFCD004C3D14 /* PNCBottomPath.swift in Sources */,
 				2329E1E8210BC273007606A5 /* PNCScreenSaver.swift in Sources */,
 				237FB1312110EFCD004C3D14 /* PNCTopPath.swift in Sources */,
 				234E3DB92117830700F5A124 /* URL+PanicSign.swift in Sources */,
+				236D04B42118E9360057ADC3 /* CGDirectDisplay+PanicSign.swift in Sources */,
 				234E3DCE211792C700F5A124 /* TimeInterval+PanicSign.swift in Sources */,
 				237FB1112110D86A004C3D14 /* Dictionary+PanicSign.swift in Sources */,
 				237AC67E2116399000627644 /* PNCPathProtocol.swift in Sources */,
@@ -639,8 +663,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4LP4G3EK3N;
-				INFOPLIST_FILE = "$(SRCROOT)/Panic Sign/Resources/Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				INFOPLIST_FILE = "Panic Sign/Resources/Info.plist";
+				INSTALL_PATH = /;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -663,8 +687,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4LP4G3EK3N;
-				INFOPLIST_FILE = "$(SRCROOT)/Panic Sign/Resources/Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				INFOPLIST_FILE = "Panic Sign/Resources/Info.plist";
+				INSTALL_PATH = /;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

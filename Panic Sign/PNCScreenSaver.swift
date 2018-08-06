@@ -4,7 +4,7 @@ import SceneKit
 class PNCScreenSaver: ScreenSaverView {
     var sceneView: PNCSceneView? = nil
 
-    lazy var preferences = PNCPreferencesController()
+    lazy var preferences = PNCPreferencesController(windowNibName: NSNib.Name("PNCPreferencesController"))
 
     override var configureSheet: NSWindow? {
         return self.preferences.window
@@ -18,12 +18,14 @@ class PNCScreenSaver: ScreenSaverView {
         return .default
     }
 
-    required init?(coder decoder: NSCoder) {
-        super.init(coder: decoder)
+    override func animateOneFrame() {
+        self.setNeedsDisplay(self.frame)
     }
 
-    override init?(frame: NSRect, isPreview: Bool) {
-        super.init(frame: frame, isPreview: isPreview)
+    override func draw(_ rect: NSRect) {
+        guard self.sceneView == nil else {
+            return
+        }
         self.redrawScene()
         self.notifier.addObserver(self, selector: #selector(preferencesDidChange), name: .preferencesDidChange, object: nil)
     }
@@ -37,14 +39,11 @@ class PNCScreenSaver: ScreenSaverView {
         self.sceneView?.addTo(superview: self)
     }
 
-    func unloadScene(_ scene: PNCSceneView) {
-        scene.removeFromSuperview()
-    }
-
     func transitionScene(toScene: PNCSceneView) {
         guard let fromScene = self.sceneView else {
             return
         }
+        self.sceneView?.unload()
         self.sceneView = toScene
         self.replaceSubview(fromScene, with: toScene)
 
@@ -56,7 +55,7 @@ class PNCScreenSaver: ScreenSaverView {
             prepare: true,
             opts: [
                 .preferredRenderingAPI: .rendering(.metal),
-                .preferLowPowerDevice: .bool(true), ])
+                .preferLowPowerDevice: .bool(.wantsDiscreteGraphics), ])
     }
 
     @objc

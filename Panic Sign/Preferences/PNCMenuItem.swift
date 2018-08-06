@@ -5,6 +5,9 @@ class PNCMenuItem: NSMenuItem {
     @IBInspectable
     var imageTintColor: NSColor?
 
+    @IBInspectable
+    var panicColorValue: Int = 0
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.imageTintColorNeedsUpdate()

@@ -3,9 +3,9 @@ import ScreenSaver
 
 class PNCPreferencesController: NSWindowController {
     @IBOutlet
-    weak var topColorButton: NSPopUpButton!
+    weak var topColorButton: PNCPopUpButton!
     @IBOutlet
-    weak var bottomColorButton: NSPopUpButton!
+    weak var bottomColorButton: PNCPopUpButton!
     @IBOutlet
     weak var matchPanicSignButton: NSButton!
     @IBOutlet
@@ -19,16 +19,9 @@ class PNCPreferencesController: NSWindowController {
         return .shared
     }
 
-    convenience init() {
-        self.init(window: nil)
-    }
-
-    override var windowNibName: NSNib.Name? {
-        return NSNib.Name("PNCPreferencesController")
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.debugButtonStateNeedsUpdate()
         self.matchButtonStateNeedsUpdate()
         self.popUpButtonEnabledNeedsUpdate()
         self.popUpButtonColorsNeedUpdate()
@@ -49,28 +42,22 @@ class PNCPreferencesController: NSWindowController {
     }
 
     func popUpButtonColorsNeedUpdate() {
-        if self.preferences.topColorTag != self.topColorButton.selectedItem?.tag {
-            self.topColorButton.selectItem(withTag: self.preferences.topColorTag)
+        if self.preferences.topColorTag != self.topColorButton.selectedItemColorValue {
+            self.topColorButton.selectItem(withColorValue: self.preferences.topColorTag)
         }
-        if self.preferences.bottomColorTag != self.bottomColorButton.selectedItem?.tag {
-            self.bottomColorButton.selectItem(withTag: self.preferences.bottomColorTag)
+        if self.preferences.bottomColorTag != self.bottomColorButton.selectedItemColorValue {
+            self.bottomColorButton.selectItem(withColorValue: self.preferences.bottomColorTag)
         }
     }
 
     @IBAction
-    func selectTopColor(_ popUpButton: NSPopUpButton) {
-        guard let tag = popUpButton.selectedItem?.tag else {
-            return
-        }
-        self.preferences.setColor(tag: tag, key: .topColor)
+    func selectTopColor(_ popUpButton: PNCPopUpButton) {
+        self.preferences.setColor(tag: popUpButton.selectedItemColorValue, key: .topColor)
     }
 
     @IBAction
-    func selectBottomColor(_ popUpButton: NSPopUpButton) {
-        guard let tag = popUpButton.selectedItem?.tag else {
-            return
-        }
-        self.preferences.setColor(tag: tag, key: .bottomColor)
+    func selectBottomColor(_ popUpButton: PNCPopUpButton) {
+        self.preferences.setColor(tag: popUpButton.selectedItemColorValue, key: .bottomColor)
     }
 
     @IBAction
@@ -86,7 +73,11 @@ class PNCPreferencesController: NSWindowController {
 
     @IBAction
     func handleOkayButton(_ sender: Any?) {
-        self.window?.close()
+        guard let window = self.window else {
+            return
+        }
+        self.preferences.defaults.synchronize()
+        self.window?.sheetParent?.endSheet(window)
     }
 
     @objc

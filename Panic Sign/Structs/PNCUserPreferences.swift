@@ -38,6 +38,7 @@ struct PNCUserPreferences {
         }
         self.defaults = defaults
         self.defaults.register(panicUserOptions: PNCUserOption.defaults)
+        self.defaults.synchronize()
         self.networkManager.updatePolling(enabled: self.usePanicSignColors)
     }
 
@@ -67,6 +68,6 @@ struct PNCUserPreferences {
 }
 
 extension PNCUserPreferences {
-    static let bundle = Bundle(for: PNCScreenSaver.self)
+    static let bundle = Bundle.init(for: PNCScreenSaver.self)
     static let shared = PNCUserPreferences()
 }

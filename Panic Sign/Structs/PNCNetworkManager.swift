@@ -61,6 +61,7 @@ class PNCNetworkManager {
         }
         self.preferences.setColor(tag: topColor.rawValue, key: .topColor)
         self.preferences.setColor(tag: bottomColor.rawValue, key: .bottomColor)
+        self.preferences.defaults.synchronize()
     }
 }
 

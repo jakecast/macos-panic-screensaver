@@ -14,6 +14,18 @@ extension UserDefaults {
 
     func register(panicUserOptions: [PNCUserOption : Any]) {
         self.register(defaults: panicUserOptions.transform({ ($0.rawValue, $1) }))
+        for (key, value) in panicUserOptions {
+            if self.value(forKey: key.rawValue) != nil {
+                continue
+            }
+            self.set(value, forKey: key.rawValue)
+        }
+    }
+
+    func reset() {
+        for (key, _) in self.dictionaryRepresentation() {
+            self.removeObject(forKey: key)
+        }
     }
 
     func set(_ value: Int, option: PNCUserOption) {

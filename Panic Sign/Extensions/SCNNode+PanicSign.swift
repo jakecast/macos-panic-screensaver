@@ -5,4 +5,8 @@ extension SCNNode {
         self.init()
         self.name = name
     }
+
+    func addTo(parentNode: SCNNode) {
+        parentNode.addChildNode(self)
+    }
 }

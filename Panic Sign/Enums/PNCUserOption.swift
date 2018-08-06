@@ -1,11 +1,11 @@
 import Foundation
 
 enum PNCUserOption: String {
-    case topColor
-    case bottomColor
-    case usePanicSignColors
-    case showDebugInfo
-    case showTime
+    case topColor = "topColor"
+    case bottomColor = "bottomColor"
+    case usePanicSignColors = "usePanicSignColors"
+    case showDebugInfo = "showDebugInfo"
+    case showTime = "showTime"
 
     static var defaults: [PNCUserOption : Any] {
         return [

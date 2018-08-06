@@ -1,6 +1,8 @@
 import SceneKit
 
 class PNCSceneView: SCNView {
+    var logoNode: SCNNode?
+
     lazy var logoOptions: PNCLogoGeometry = PNCLogoGeometry(area: 20.0)
 
     required init?(coder decoder: NSCoder) {
@@ -21,7 +23,15 @@ class PNCSceneView: SCNView {
         self.backgroundColor = .black
         self.scene = SCNScene()
         self.prepareScene()
-        self.addLogo()
+        self.addLogoNode()
+        self.animateLogoNode()
+    }
+
+    func unload() {
+        guard let node = self.logoNode else {
+            return
+        }
+        node.removeAllAnimations()
     }
 
     func prepareScene() {
@@ -52,45 +62,36 @@ class PNCSceneView: SCNView {
         self.showsStatistics = .showDebugInfo
     }
 
-    func addLogo() {
+    func addLogoNode() {
         guard let scene = self.scene else {
             fatalError("missing scene")
         }
-        guard let logo = PNCLogoNode(opts: self.logoOptions) else {
+        guard let node = PNCLogoNode(opts: self.logoOptions) else {
             fatalError("invalid logo options")
         }
-        scene.rootNode.addChildNode(logo.flatNode)
+        self.logoNode = node.flatNode
+        self.logoNode?.addTo(parentNode: scene.rootNode)
     }
 
-//    func logoShouldMove() {
-//        let move = CABasicAnimation(keyPath: "transform.translation")
-//        move.toValue = NSPoint(x: .random(in: -5.0 ... 5.0), y: .random(in: -5.0 ... 5.0))
-//        move.autoreverses = true
-//        move.duration = 5
-//
-//        let moveAnimation = SCNAnimation(caAnimation: move)
-//        moveAnimation.animationDidStop = { [weak self] in self?.logoDidMove($0, $1, $2) }
-//
-//        self.logoNode?.addAnimation(moveAnimation, forKey: "move")
-//    }
-//
-//    func logoDidMove(_: SCNAnimation, _: SCNAnimatable, _: Bool) -> Void {
-//        self.logoShouldMove()
-//    }
-//
-//    func logoShouldRotate(direction: CGFloat = 1.0) {
-//        let rotate = CABasicAnimation(keyPath: "rotation.w")
-//        rotate.toValue = .random(in: 0.25 ... 0.35) * .pi * direction
-//        rotate.duration = 5.0
-//        rotate.autoreverses = true
-//
-//        let rotateAnimation = SCNAnimation(caAnimation: rotate)
-//        rotateAnimation.animationDidStop = { [weak self] in self?.logoDidRotate(direction * -1.0, $0, $1, $2) }
-//
-//        self.logoNode?.addAnimation(rotateAnimation, forKey: "rotate")
-//    }
+    func animateLogoNode() {
+        guard let node = self.logoNode else {
+            return
+        }
+        self.runAnimation(node: node)
+    }
 
-    func logoDidRotate(_ direction: CGFloat, _: SCNAnimation, _: SCNAnimatable, _: Bool) -> Void {
-//        self.logoShouldRotate(direction: direction)
+    func runAnimation(node: SCNNode, offset: Int = 1) {
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 10.0
+        SCNTransaction.animationTimingFunction = .linear
+        SCNTransaction.completionBlock = { [weak self] in self?.animationDidEnd(node: node, offset: offset) }
+        node.position.x = .random(in: -5.0 ... 5.0)
+        node.position.y = .random(in: -5.0 ... 5.0)
+        node.rotation.w = .random(in: 0.25 ... 0.35) * .pi * CGFloat(offset)
+        SCNTransaction.commit()
+    }
+
+    func animationDidEnd(node: SCNNode, offset: Int) {
+        self.runAnimation(node: node, offset: offset * -1)
     }
 }
