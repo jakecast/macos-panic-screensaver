@@ -17,29 +17,28 @@ enum PNCLogoColor: Int {
         guard let name = name else {
             return nil
         }
-        
         switch name {
-        case "panicRed":
+        case "panicRed", "red":
             self = .panicRed
-        case "panicYellow":
+        case "panicYellow", "yellow":
             self = .panicYellow
         case "panicOrange", "orange":
             self = .panicOrange
-        case "panicLemon":
+        case "panicLemon", "green":
             self = .panicLemon
-        case "panicGreen":
+        case "panicGreen", "green2":
             self = .panicGreen
-        case "panicTeal":
+        case "panicTeal", "teal":
             self = .panicTeal
-        case "panicSeafoam":
+        case "panicSeafoam", "lightblue":
             self = .panicSeafoam
-        case "panicBlue":
+        case "panicBlue", "blue":
             self = .panicBlue
-        case "panicNavy":
+        case "panicNavy", "darkblue":
             self = .panicNavy
-        case "panicPurple":
+        case "panicPurple", "purple":
             self = .panicPurple
-        case "panicPink":
+        case "panicPink", "pink":
             self = .panicPink
         case _:
             return nil
