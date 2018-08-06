@@ -19,6 +19,9 @@ class PNCScreenSaver: ScreenSaverView {
     }
 
     override func animateOneFrame() {
+        guard self.sceneView == nil else {
+            return
+        }
         self.setNeedsDisplay(self.frame)
     }
 
