@@ -1,3 +1,5 @@
+![screensaver](https://github.com/jakecast/macos-panic-screensaver/blob/406d6828994d6068747aff77fca598d2f5573a3a/screensaver.gif)
+
 ## Panic Sign Screen Saver
 
 A macOS screensaver based on the logo of shockingly good software creator, Panic Inc.
