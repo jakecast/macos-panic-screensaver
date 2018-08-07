@@ -9,17 +9,12 @@ class PNCSceneView: SCNView {
         super.init(coder: decoder)
     }
 
-    init(frame: NSRect, prepare: Bool, opts: [SCNView.Option : SCNViewSetting]? = nil) {
-        super.init(
-            frame: frame,
-            options: opts?.transform({ ($0.rawValue, $1.rawValue) }))
-
-        if prepare {
-            self.prepare()
-        }
+    init(frame: NSRect, opts: [SCNView.Option : SCNViewSetting]? = nil) {
+        super.init(frame: frame, options: opts?.transform({ ($0.rawValue, $1.rawValue) }))
+        self.setup()
     }
 
-    func prepare() {
+    func setup() {
         self.backgroundColor = .black
         self.scene = SCNScene()
         self.prepareScene()

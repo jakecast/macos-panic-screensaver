@@ -38,7 +38,6 @@ class PNCScreenSaver: ScreenSaverView {
             return self.transitionScene(toScene: self.newScene())
         }
         self.sceneView = self.newScene()
-        self.sceneView?.prepare()
         self.sceneView?.addTo(superview: self)
     }
 
@@ -55,7 +54,6 @@ class PNCScreenSaver: ScreenSaverView {
     func newScene() -> PNCSceneView {
         return PNCSceneView(
             frame: self.bounds,
-            prepare: true,
             opts: [
                 .preferredRenderingAPI: .rendering(.metal),
                 .preferLowPowerDevice: .bool(.wantsDiscreteGraphics), ])
