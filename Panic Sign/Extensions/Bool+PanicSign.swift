@@ -20,4 +20,8 @@ extension Bool {
     static var wantsDiscreteGraphics: Bool {
         return .hasMultipleDisplays && .isUsingPowerAdapter
     }
+
+    static var wantsLowerPowerGraphics: Bool {
+        return !.wantsDiscreteGraphics
+    }
 }

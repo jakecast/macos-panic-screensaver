@@ -56,7 +56,7 @@ class PNCScreenSaver: ScreenSaverView {
             frame: self.bounds,
             opts: [
                 .preferredRenderingAPI: .rendering(.metal),
-                .preferLowPowerDevice: .bool(.wantsDiscreteGraphics), ])
+                .preferLowPowerDevice: .bool(.wantsLowerPowerGraphics), ])
     }
 
     @objc

@@ -1,6 +1,7 @@
 import SceneKit
 
 class PNCSceneView: SCNView {
+    var isAnimating: Bool = false
     var logoNode: SCNNode?
 
     lazy var logoOptions: PNCLogoGeometry = PNCLogoGeometry(area: 20.0)
@@ -14,14 +15,6 @@ class PNCSceneView: SCNView {
         self.setup()
     }
 
-    func setup() {
-        self.backgroundColor = .black
-        self.scene = SCNScene()
-        self.prepareScene()
-        self.addLogoNode()
-        self.animateLogoNode()
-    }
-
     func unload() {
         guard let node = self.logoNode else {
             return
@@ -29,7 +22,15 @@ class PNCSceneView: SCNView {
         node.removeAllAnimations()
     }
 
-    func prepareScene() {
+    func setup() {
+        self.backgroundColor = .black
+        self.scene = SCNScene()
+        self.setupLighting()
+        self.drawLogoNode()
+        self.animateScene()
+    }
+
+    func setupLighting() {
         guard let scene = self.scene else {
             return
         }
@@ -57,7 +58,7 @@ class PNCSceneView: SCNView {
         self.showsStatistics = .showDebugInfo
     }
 
-    func addLogoNode() {
+    func drawLogoNode() {
         guard let scene = self.scene else {
             fatalError("missing scene")
         }
@@ -68,10 +69,11 @@ class PNCSceneView: SCNView {
         self.logoNode?.addTo(parentNode: scene.rootNode)
     }
 
-    func animateLogoNode() {
-        guard let node = self.logoNode else {
+    func animateScene() {
+        guard let node = self.logoNode, !self.isAnimating else {
             return
         }
+        self.isAnimating = true
         self.runAnimation(node: node)
     }
 

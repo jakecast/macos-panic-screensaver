@@ -10,8 +10,7 @@ extension PNCPathProtocol where Self : NSBezierPath {
     init(opts: PNCLogoGeometry) {
         self.init()
         self.opts = opts
-        self.lineJoinStyle = .round
-        self.flatness = 0.01
+        self.flatness = 0
         self.draw()
     }
 
