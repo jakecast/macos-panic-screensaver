@@ -4,7 +4,7 @@ import SceneKit
 class PNCScreenSaver: ScreenSaverView {
     var sceneView: PNCSceneView? = nil
 
-    lazy var preferences = PNCPreferencesController(windowNibName: NSNib.Name("PNCPreferencesController"))
+    lazy var preferences = PNCPreferencesController(windowNibName: .preferencesController)
 
     override var configureSheet: NSWindow? {
         return self.preferences.window

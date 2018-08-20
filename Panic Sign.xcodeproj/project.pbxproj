@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		23085124211664C200648E49 /* PNCLogoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23085123211664C200648E49 /* PNCLogoColor.swift */; };
 		230851252116668D00648E49 /* PNCLogoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23085123211664C200648E49 /* PNCLogoColor.swift */; };
+		231CA99D21248C34001036A3 /* NSNibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CA99C21248C34001036A3 /* NSNibName.swift */; };
+		231CA99E21248C3B001036A3 /* NSNibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231CA99C21248C34001036A3 /* NSNibName.swift */; };
 		2329E1E7210BC231007606A5 /* PNCScreenSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329E1E6210BC231007606A5 /* PNCScreenSaver.swift */; };
 		2329E1E8210BC273007606A5 /* PNCScreenSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329E1E6210BC231007606A5 /* PNCScreenSaver.swift */; };
 		232E7BC1211381860021F4C7 /* PNCLogoGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E7BC0211381860021F4C7 /* PNCLogoGeometry.swift */; };
@@ -98,6 +100,7 @@
 
 /* Begin PBXFileReference section */
 		23085123211664C200648E49 /* PNCLogoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCLogoColor.swift; sourceTree = "<group>"; };
+		231CA99C21248C34001036A3 /* NSNibName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNibName.swift; sourceTree = "<group>"; };
 		2329E1E6210BC231007606A5 /* PNCScreenSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCScreenSaver.swift; sourceTree = "<group>"; };
 		232E7BC0211381860021F4C7 /* PNCLogoGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNCLogoGeometry.swift; sourceTree = "<group>"; };
 		232E7BC321138B910021F4C7 /* SCNShape+PanicSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNShape+PanicSign.swift"; sourceTree = "<group>"; };
@@ -220,6 +223,7 @@
 				234E3DC1211787BD00F5A124 /* NotificationName+PanicSign.swift */,
 				237FB1022110CE6F004C3D14 /* NSColor+PanicSign.swift */,
 				237AC667211629A100627644 /* NSImage+PanicSign.swift */,
+				231CA99C21248C34001036A3 /* NSNibName.swift */,
 				237AC66F211632C700627644 /* NSRect+PanicSign.swift */,
 				236D049D2118D8300057ADC3 /* NSView+PanicSign.swift */,
 				237FB11C2110DD49004C3D14 /* SCNNode+PanicSign.swift */,
@@ -440,6 +444,7 @@
 				236D04992118D0680057ADC3 /* Bool+PanicSign.swift in Sources */,
 				237FB1092110D498004C3D14 /* SCNGeometry+PanicSign.swift in Sources */,
 				237FB12C2110EE51004C3D14 /* PNCBottomPath.swift in Sources */,
+				231CA99D21248C34001036A3 /* NSNibName.swift in Sources */,
 				232E7BC421138B910021F4C7 /* SCNShape+PanicSign.swift in Sources */,
 				23085124211664C200648E49 /* PNCLogoColor.swift in Sources */,
 				237FB1102110D7E1004C3D14 /* Dictionary+PanicSign.swift in Sources */,
@@ -502,6 +507,7 @@
 				237AC669211629A700627644 /* NSImage+PanicSign.swift in Sources */,
 				237FB1072110D3CB004C3D14 /* NSColor+PanicSign.swift in Sources */,
 				237FB1332110EFCD004C3D14 /* PNCLetterPath.swift in Sources */,
+				231CA99E21248C3B001036A3 /* NSNibName.swift in Sources */,
 				237FB11B2110DB77004C3D14 /* SCNViewSetting.swift in Sources */,
 				232E7BC521138BF30021F4C7 /* SCNShape+PanicSign.swift in Sources */,
 				232E7BD2211393250021F4C7 /* PNCUserPreferences.swift in Sources */,
